@@ -16,7 +16,7 @@ std::vector<double> input, filter, conv;
 conv = nvolution::myConvolve(input, filter);
 ```
 
-[![gif](https://i.stack.imgur.com/kTBiy.gif)]()
+[![gif](https://i.stack.imgur.com/kTBiy.gif)](https://i.stack.imgur.com/kTBiy.gif)
 
 ### 2D vectors
 To use the 2 dimentional convolution function just call the _myConvolve_ function with 2 2d vectors of doubles.
@@ -25,4 +25,4 @@ std::vector<std::vector<double>> input, filter, conv;
 conv = nvolution::myConvolve(input, filter);
 ```
 
-[![gif](https://cdn-images-1.medium.com/max/1600/1*VVvdh-BUKFh2pwDD0kPeRA@2x.gif)]()
+[![gif](https://cdn-images-1.medium.com/max/1600/1*VVvdh-BUKFh2pwDD0kPeRA@2x.gif)](https://cdn-images-1.medium.com/max/1600/1*VVvdh-BUKFh2pwDD0kPeRA@2x.gif)
