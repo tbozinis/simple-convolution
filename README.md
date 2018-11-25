@@ -5,7 +5,7 @@ In this project I implimented the convolution algorithm both for a 1d vector and
 
 ## Getting started
 Firstly, iclude the _Convolution.h_ file.
-> `#include "Convolution.h"`
+`#include "Convolution.h"`
 
 Then you can use the static methods _myConvolve_ passing the correct inputs 
 
