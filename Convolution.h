@@ -12,21 +12,24 @@
 
 class Convolution {
 public:
-    static std::vector<double> myConvolve(const std::vector<double> &x, const std::vector<double> &h);
+    template<typename T>
+    static std::vector<T> myConvolve(const std::vector<T> &x, const std::vector<T> &h);
 
-    static std::vector<std::vector<double>>
-    myConvolve(const std::vector<std::vector<double>> &x, const std::vector<std::vector<double>> &h);
+    template<typename T>
+    static std::vector<std::vector<T>>
+    myConvolve(const std::vector<std::vector<T>> &x, const std::vector<std::vector<T>> &h);
 };
 
-std::vector<double> Convolution::myConvolve(const std::vector<double> &x, const std::vector<double> &h) {
-    std::vector<double> out;
+template<typename T>
+std::vector<T> Convolution::myConvolve(const std::vector<T> &x, const std::vector<T> &h) {
+    std::vector<T> out;
 
     // iterate through the first vector
-    for (long i = 0; i < x.size(); i++) {
-        double v = 0;
+    for (unsigned long i = 0; i < x.size(); i++) {
+        T v = 0;
 
         // run the filter on the input vector
-        for (long j = 0, j_end = (i < h.size()) ? i + 1 : h.size(); j < j_end; j++)
+        for (unsigned long j = 0, j_end = (i < h.size()) ? i + 1 : h.size(); j < j_end; j++)
             v += x[i - j] * h[j];
 
         out.push_back(v);
@@ -35,9 +38,10 @@ std::vector<double> Convolution::myConvolve(const std::vector<double> &x, const 
     return out;
 }
 
-std::vector<std::vector<double>>
-Convolution::myConvolve(const std::vector<std::vector<double>> &x, const std::vector<std::vector<double>> &h) {
-    std::vector<std::vector<double>> out;
+template<typename T>
+std::vector<std::vector<T>>
+Convolution::myConvolve(const std::vector<std::vector<T>> &x, const std::vector<std::vector<T>> &h) {
+    std::vector<std::vector<T>> out;
 
     unsigned long input_rows = x.size();
     unsigned long input_columns = x[0].size();
@@ -54,12 +58,12 @@ Convolution::myConvolve(const std::vector<std::vector<double>> &x, const std::ve
             if (filter_rows + row > input_rows || filter_columns + column > input_columns)
                 continue;
 
-            double v = 0;
+            T v = 0;
 
             // run the filter on the input vector
             for (unsigned long i = 0; i < filter_rows; i++)
                 for (unsigned long j = 0; j < filter_columns; j++)
-                    v += x[row][column] * h[i][j];
+                    v += x[row + i][column + j] * h[i][j];
 
             temp_row.push_back(v);
         }
@@ -69,6 +73,5 @@ Convolution::myConvolve(const std::vector<std::vector<double>> &x, const std::ve
 
     return out;
 }
-
 
 #endif //CONVOLUTION_CONVOLUTION_H

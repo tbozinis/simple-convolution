@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
-project(convolution)
+project(simple_convolution)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(convolution main.cpp Convolution.h)
+include_directories(.)
+
+add_executable(simple_convolution
+        Convolution.h
+        main.cpp)
