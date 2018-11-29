@@ -230,7 +230,7 @@ int main() {
             filter_2d[i][j] = 1.0 / 9;
     }
 
-    myConvolution << < 1, 256 >> > (rows, columns, 3, 3, input_2d, filter_2d, conv_2d);
+    myConvolution << < 1, 2048 >> > (rows, columns, 3, 3, input_2d, filter_2d, conv_2d);
 
     // wait for the gpu thread to end
     cudaDeviceSynchronize();
