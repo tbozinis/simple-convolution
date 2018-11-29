@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(simple_convolution
-        Convolution.h
-        main.cpp)
+        cpu/Convolution.h
+        cpu/main.cpp)
