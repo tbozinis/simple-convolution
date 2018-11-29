@@ -3,17 +3,30 @@
 #include <random>
 #include <fstream>
 
+//! One dimensional convolution.
+//! \param input_size input vector size
+//! \param filter_size filter vector size
+//! \param input the input vector
+//! \param filter the filter vector
+//! \param conv the convolution vector
 __global__
 void myConvolution(int input_size, int filter_size, double *input, double *filter, double *conv) {
     int index = threadIdx.x;
     int stride = blockDim.x;
-
     // iterate through the first vector and foreach cell run the filter
     for (int i = index; i < input_size; i += stride)
         for (int j = 0, j_end = (i < filter_size) ? i + 1 : filter_size; j < j_end; j++)
             conv[i] += input[i - j] * filter[j];
 }
 
+//! Two dimensional convolution.
+//! \param input_size_n #rows of input array
+//! \param input_size_m #columns of input array
+//! \param filter_size_n #rows of filter array
+//! \param filter_size_m #columns of filter array
+//! \param input the input array
+//! \param filter the filter array
+//! \param conv the convolution array
 __global__
 void myConvolution(int input_size_n, int input_size_m, int filter_size_n, int filter_size_m,
                    double **input, double **filter, double **conv) {
@@ -23,7 +36,7 @@ void myConvolution(int input_size_n, int input_size_m, int filter_size_n, int fi
     // iterate through the first vector
     for (int row = index; row < input_size_n; row += stride) {
         for (int column = 0; column < input_size_m; column++) {
-            // if the filter doesn't fit continue
+            // if the filter doesn't fit continueinput
             if (filter_size_n + row > input_size_n || filter_size_m + column > input_size_m)
                 continue;
 
