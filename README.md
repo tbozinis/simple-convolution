@@ -11,7 +11,7 @@ Then you can use the static methods _myConvolve_ passing the correct inputs
 
 ### 1D vectors
 To use the one dimentional convolution function just call the _myConvolve_ function with 2 vectors of doubles.
-```
+```cpp
 std::vector<T> input, filter, conv;
 conv = nvolution::myConvolve(input, filter);
 ```
@@ -20,7 +20,7 @@ conv = nvolution::myConvolve(input, filter);
 
 ### 2D vectors
 To use the 2 dimentional convolution function just call the _myConvolve_ function with 2 2d vectors of doubles.
-```
+```cpp
 std::vector<std::vector<T>> input, filter, conv;
 conv = nvolution::myConvolve(input, filter);
 ```
